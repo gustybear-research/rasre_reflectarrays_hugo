@@ -1,0 +1,244 @@
+{{- define "main" -}}
+
+<div class="about-page-wrapper">
+  <!-- Green Decorative Sidebars -->
+  <div class="decorative-bg decorative-bg-left"></div>
+  <div class="decorative-bg decorative-bg-right"></div>
+  
+  <div class="about-content-wrapper">
+    <!-- Header Section -->
+    <div class="about-header">
+      <h1 class="about-main-title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+      <p class="about-subtitle">{{ . }}</p>
+      {{ end }}
+      <hr class="about-divider">
+    </div>
+
+    <!-- Featured Image -->
+    {{ with .Params.filename }}
+      {{ $image := resources.Get (printf "media/%s" .) }}
+      {{ if $image }}
+      <div class="about-image-container">
+        <img src="{{ $image.RelPermalink }}" alt="{{ $.Title }}" class="about-featured-image">
+      </div>
+      {{ end }}
+    {{ end }}
+
+    <!-- Main Content -->
+    <div class="about-content">
+      {{ .Content }}
+    </div>
+  </div>
+</div>
+
+<style>
+/* Main Container */
+.about-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+/* Decorative Green Background Sidebars */
+.decorative-bg {
+  position: fixed;
+  width: 300px;
+  min-height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.decorative-bg-left {
+  left: 0;
+  background: linear-gradient(135deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+  opacity: 0.95;
+}
+
+.decorative-bg-right {
+  right: 0;
+  background: linear-gradient(225deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+  opacity: 0.95;
+}
+
+/* Content Wrapper */
+.about-content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 320px;
+}
+
+/* Header Section */
+.about-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 20px;
+}
+
+.about-main-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.about-subtitle {
+  font-size: 1.8rem;
+  color: #2d7a66;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Horizontal Divider */
+.about-divider {
+  width: 200px;
+  height: 3px;
+  background: #2d7a66;
+  border: none;
+  margin: 30px auto 0;
+  border-radius: 2px;
+}
+
+/* Featured Image */
+.about-image-container {
+  max-width: 450px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.about-featured-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Section */
+.about-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Dark Mode Support */
+html.dark .about-page-wrapper {
+  background: #1a1a1a;
+}
+
+/* Hide green sidebars in dark mode */
+html.dark .decorative-bg {
+  display: none;
+}
+
+html.dark .about-main-title {
+  color: #ffffff;
+}
+
+html.dark .about-subtitle {
+  color: #4db6ac;
+}
+
+html.dark .about-divider {
+  background: #4db6ac;
+}
+
+html.dark .about-featured-image {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .about-content {
+  color: #e0e0e0;
+}
+
+/* Adjust padding in dark mode since sidebars are hidden */
+html.dark .about-content-wrapper {
+  padding: 0 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .decorative-bg {
+    width: 200px;
+  }
+  
+  .about-content-wrapper {
+    padding: 0 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .decorative-bg {
+    width: 150px;
+  }
+  
+  .about-main-title {
+    font-size: 3rem;
+  }
+  
+  .about-content-wrapper {
+    padding: 0 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .decorative-bg {
+    width: 80px;
+    opacity: 0.7;
+  }
+  
+  .about-page-wrapper {
+    padding: 40px 15px;
+  }
+  
+  .about-content-wrapper {
+    padding: 0 100px;
+  }
+  
+  .about-main-title {
+    font-size: 2.5rem;
+  }
+  
+  .about-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .about-content {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .decorative-bg {
+    width: 50px;
+    opacity: 0.5;
+  }
+  
+  .about-content-wrapper {
+    padding: 0 70px;
+  }
+  
+  .about-main-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .about-subtitle {
+    font-size: 1.1rem;
+  }
+}
+</style>
+
+{{- end -}}

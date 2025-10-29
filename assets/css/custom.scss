@@ -1,0 +1,102 @@
+// Custom styles for About page with vertical sidebars (matching team page)
+
+.about-with-sidebars {
+  position: relative;
+  min-height: 100vh;
+  
+  // Left green sidebar
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+    opacity: 0.95;
+    z-index: -1;
+  }
+  
+  // Right green sidebar
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: linear-gradient(225deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+    opacity: 0.95;
+    z-index: -1;
+  }
+  
+  // Center the content with white background
+  .prose {
+    background: white;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 3rem 320px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  // Ensure content container takes full width
+  .max-w-prose {
+    max-width: 100% !important;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .about-with-sidebars {
+    &::before,
+    &::after {
+      width: 200px;
+    }
+    
+    .prose {
+      padding: 2.5rem 220px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .about-with-sidebars {
+    &::before,
+    &::after {
+      width: 150px;
+    }
+    
+    .prose {
+      padding: 2rem 170px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-with-sidebars {
+    &::before,
+    &::after {
+      width: 80px;
+      opacity: 0.7;
+    }
+    
+    .prose {
+      padding: 2rem 100px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .about-with-sidebars {
+    &::before,
+    &::after {
+      width: 50px;
+      opacity: 0.5;
+    }
+    
+    .prose {
+      padding: 1.5rem 70px;
+    }
+  }
+}
