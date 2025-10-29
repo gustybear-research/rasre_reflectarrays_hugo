@@ -11,15 +11,15 @@ design:
 sections:
   - block: hero
     content:
-      title: "MONET - Millimeter-wave Communication and Sensing Integration"
+      title: "RASRE - Reflectarray and Applications in Smart Radio Environment"
       text: "A UH Manoa ECE VIP Project by Yao Zheng"
       primary_action:
         text: "Request to Join"
-        url: "mailto:yaozheng@hawaii.edu?subject=Request to Join MONET VIP Project&body=Hello Professor Zheng,%0D%0I would like to request more information on the MONET VIP project, and am wondering if you are accepting new applicants.%0D%0Thank you"
+        url: "mailto:yaozheng@hawaii.edu?subject=Request to Join RASRE VIP Project&body=Hello Professor Zheng,%0D%0I would like to request more information on the RASRE VIP project, and am wondering if you are accepting new applicants.%0D%0Thank you"
         icon: "sparkles"
       secondary_action:
         text: "Learn More"
-        url: "/~monet/about"
+        url: "/~rasre/about"
       # announcement:
       #   text: "🎉 New features available now!"
       #   link:
