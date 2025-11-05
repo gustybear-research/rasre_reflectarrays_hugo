@@ -1,7 +1,7 @@
 ---
-title: RASRE - Reflectarray and Applications in Smart Radio Environment
+title: Reflective Array Assisted Integrated Sensing and Communication system
 type: facility
-subtype: project
+subtype: testbed
 image:
   filename: facility/rasre/rasre-featured.png
   caption: Usage of Reflectarrays to distribute signals

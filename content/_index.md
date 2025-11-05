@@ -15,7 +15,7 @@ sections:
       text: "A UH Manoa ECE VIP Project by Yao Zheng"
       primary_action:
         text: "Request to Join"
-        url: "mailto:yaozheng@hawaii.edu?subject=Request to Join RASRE VIP Project&body=Hello Professor Zheng,%0D%0I would like to request more information on the RASRE VIP project, and am wondering if you are accepting new applicants.%0D%0Thank you"
+        url: "mailto:yaozheng@hawaii.edu?subject=[RASRE VIP] Request to Join RASRE Project&body=Hello Professor Zheng,%0D%0I would like to request more information on the RASRE VIP project, and am wondering if you are accepting new applicants.%0D%0Thank you"
         icon: "sparkles"
       secondary_action:
         text: "Learn More"

@@ -1,0 +1,250 @@
+{{ define "main" }}
+<div class="archive-page-wrapper">
+  <!-- Decorative Green Background Sidebars -->
+  <div class="decorative-bg decorative-bg-left"></div>
+  <div class="decorative-bg decorative-bg-right"></div>
+  
+  <div class="archive-content-wrapper">
+    <div class="universal-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+      
+      <!-- Header Section -->
+      <div class="archive-header">
+        {{ with .Title }}
+        <h1 class="archive-main-title">{{ . }}</h1>
+        {{ end }}
+        {{ with .Content }}
+        <div class="article-style">{{ . }}</div>
+        {{ end }}
+      </div>
+      
+      <!-- Archive Content -->
+      <div class="archive-content">
+        <div class="archive-list">
+          {{ $archive_items := where site.RegularPages "Section" "archive" }}
+          {{ if $archive_items }}
+            {{ range $archive_items }}
+              <a href="{{ .RelPermalink }}" class="archive-item-link">
+                <div class="archive-item">
+                  <h3>{{ .Title }}</h3>
+                  {{ with .Date }}<p class="archive-date"><strong>Date:</strong> {{ .Format "January 2, 2006" }}</p>{{ end }}
+                  {{ with .Summary }}<p class="archive-summary">{{ . }}</p>{{ end }}
+                </div>
+              </a>
+            {{ end }}
+          {{ else }}
+            <p>No archived items available.</p>
+          {{ end }}
+        </div>
+      </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Main Container with Decorative Sidebars */
+.archive-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+/* Decorative Green Background Sidebars */
+.decorative-bg {
+  position: fixed;
+  width: 300px;
+  min-height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.decorative-bg-left {
+  left: 0;
+  background: linear-gradient(135deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+  opacity: 0.95;
+}
+
+.decorative-bg-right {
+  right: 0;
+  background: linear-gradient(225deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+  opacity: 0.95;
+}
+
+/* Content Wrapper */
+.archive-content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 320px;
+}
+
+/* Header Section */
+.archive-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 20px;
+}
+
+.archive-main-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.archive-content {
+  margin-top: 2rem;
+}
+
+.archive-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.archive-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.archive-item {
+  padding: 1.5rem;
+  border: 1px solid #e1e5e9;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.archive-item-link:hover .archive-item {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.archive-item h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.archive-item-link:hover .archive-item h3 {
+  color: #28a745;
+}
+
+.archive-date {
+  color: #28a745;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.archive-summary {
+  color: #6c757d;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Dark Mode Support - Following the same pattern as About and Team pages */
+html.dark .archive-main-title {
+  color: #ffffff;
+}
+
+html.dark .archive-item {
+  background-color: #343a40;
+  border-color: #495057;
+}
+
+html.dark .archive-item-link:hover .archive-item {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+html.dark .archive-item h3 {
+  color: #f8f9fa;
+}
+
+html.dark .archive-item-link:hover .archive-item h3 {
+  color: #28a745;
+}
+
+html.dark .archive-summary {
+  color: #adb5bd;
+}
+
+/* Dark Mode - Hide green sidebars in dark mode */
+html.dark .decorative-bg {
+  display: none;
+}
+
+/* Adjust content wrapper padding in dark mode since sidebars are hidden */
+html.dark .archive-content-wrapper {
+  padding: 0 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .decorative-bg {
+    width: 200px;
+  }
+  
+  .archive-content-wrapper {
+    padding: 0 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .decorative-bg {
+    width: 150px;
+  }
+  
+  .archive-content-wrapper {
+    padding: 0 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .decorative-bg {
+    width: 80px;
+    opacity: 0.7;
+  }
+  
+  .archive-page-wrapper {
+    padding: 40px 15px;
+  }
+  
+  .archive-content-wrapper {
+    padding: 0 100px;
+  }
+  
+  .archive-main-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .decorative-bg {
+    width: 50px;
+    opacity: 0.5;
+  }
+  
+  .archive-content-wrapper {
+    padding: 0 70px;
+  }
+  
+  .archive-main-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+}
+</style>
+
+{{ end }}

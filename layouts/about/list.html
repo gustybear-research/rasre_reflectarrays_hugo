@@ -32,6 +32,23 @@
   </div>
 </div>
 
+<!-- MathJax Support for Mathematical Notation -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    processEnvironments: true
+  },
+  options: {
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+  }
+};
+</script>
+
 <style>
 /* Main Container */
 .about-page-wrapper {
@@ -90,7 +107,7 @@
 
 .about-subtitle {
   font-size: 1.8rem;
-  color: #2d7a66;
+  color: #1e5f4f;
   font-weight: 600;
   margin: 0;
 }
@@ -99,7 +116,7 @@
 .about-divider {
   width: 200px;
   height: 3px;
-  background: #2d7a66;
+  background: #1e5f4f;
   border: none;
   margin: 30px auto 0;
   border-radius: 2px;
@@ -133,6 +150,341 @@
   margin-bottom: 1.5rem;
 }
 
+/* Anchor Links */
+.about-content a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.about-content a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.about-content a:visited {
+  color: #6f42c1;
+}
+
+/* Content Headings */
+.about-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 2rem 0 1rem 0;
+  text-align: center;
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1e5f4f;
+  margin: 1.8rem 0 1rem 0;
+  text-align: center;
+}
+
+.about-content h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1.5rem 0 0.8rem 0;
+  text-align: center;
+}
+
+.about-content h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1e5f4f;
+  margin: 1.2rem 0 0.6rem 0;
+  text-align: center;
+}
+
+.about-content h5,
+.about-content h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 1rem 0 0.5rem 0;
+  text-align: center;
+}
+
+/* Table Styling */
+.about-content table {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-content table th {
+  background-color: #1e5f4f;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #1e5f4f;
+  border-right: 1px solid #1e5f4f;
+}
+
+.about-content table th:last-child {
+  border-right: none;
+}
+
+.about-content table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e1e5e9;
+  border-right: 1px solid #e1e5e9;
+  color: #444;
+}
+
+.about-content table td:last-child {
+  border-right: none;
+}
+
+.about-content table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.about-content table tr:hover {
+  background-color: #e8f5e8;
+}
+
+.about-content table th:first-child,
+.about-content table td:first-child {
+  border-left: 4px solid #1e5f4f;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .about-content table {
+    font-size: 0.9rem;
+  }
+  
+  .about-content table th,
+  .about-content table td {
+    padding: 8px 10px;
+  }
+}
+
+/* Collapsible/Dropdown Content - Integrated with tables */
+.about-content details {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  max-width: none;
+  overflow: visible;
+}
+
+/* When details is inside a table cell */
+.about-content table td details {
+  width: 100%;
+  margin: 0;
+}
+
+.about-content table td details summary {
+  background-color: transparent;
+  color: #1e5f4f;
+  padding: 0;
+  font-weight: 500;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: color 0.3s ease;
+  position: relative;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.about-content table td details summary::-webkit-details-marker {
+  display: none;
+}
+
+.about-content table td details summary::before {
+  content: "▲";
+  color: #6ee7b7;
+  font-size: 0.7rem;
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  width: 12px;
+  transform: rotate(90deg);
+}
+
+.about-content table td details[open] summary::before {
+  transform: rotate(0deg);
+}
+
+.about-content table td details summary:hover {
+  color: #1e5f4f;
+}
+
+/* Standalone details (not in tables) */
+.about-content details:not(table details) {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  margin: 1.5rem auto;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.about-content details:not(table details) summary {
+  background-color: #2a2a2a;
+  color: #1e5f4f;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+  position: relative;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.about-content details:not(table details) summary::-webkit-details-marker {
+  display: none;
+}
+
+.about-content details:not(table details) summary::before {
+  content: "▲";
+  color: #1e5f4f;
+  font-size: 0.8rem;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+  transform: rotate(-90deg);
+}
+
+.about-content details:not(table details)[open] summary::before {
+  transform: rotate(0deg);
+}
+
+.about-content details:not(table details) summary:hover {
+  background-color: #333333;
+}
+
+.about-content details:not(table details)[open] summary {
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+/* Details content inside table cells */
+.about-content table td details .details-content {
+  padding: 8px 0 0 20px;
+  background-color: transparent;
+  color: inherit;
+  font-size: 0.9rem;
+  border-left: 2px solid #1e5f4f;
+  margin-top: 8px;
+}
+
+.about-content table td details .details-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Standalone details content */
+.about-content details:not(table details) .details-content {
+  padding: 20px;
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+.about-content details:not(table details) .details-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Light mode override for table dropdowns */
+html:not(.dark) .about-content table td details summary {
+  color: #1e5f4f;
+}
+
+html:not(.dark) .about-content table td details summary::before {
+  color: #1e5f4f;
+}
+
+html:not(.dark) .about-content table td details summary:hover {
+  color: #1e5f4f;
+}
+
+html:not(.dark) .about-content table td details .details-content {
+  border-left-color: #1e5f4f;
+  color: #444;
+}
+
+/* Light mode override for standalone dropdowns */
+html:not(.dark) .about-content details:not(table details) {
+  background-color: #f8f9fa;
+  border-color: #e1e5e9;
+}
+
+html:not(.dark) .about-content details:not(table details) summary {
+  background-color: #f8f9fa;
+  color: #1e5f4f;
+}
+
+html:not(.dark) .about-content details:not(table details) summary::before {
+  color: #1e5f4f;
+}
+
+html:not(.dark) .about-content details:not(table details) summary:hover {
+  background-color: #e9ecef;
+}
+
+html:not(.dark) .about-content details:not(table details)[open] summary {
+  background-color: #f8f9fa;
+  border-bottom-color: #e1e5e9;
+}
+
+html:not(.dark) .about-content details:not(table details) .details-content {
+  background-color: #ffffff;
+  color: #444;
+}
+
+/* List Styling within content */
+.about-content ul,
+.about-content ol {
+  text-align: left;
+  max-width: 700px;
+  margin: 1.5rem auto;
+  padding-left: 2rem;
+}
+
+.about-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Code blocks */
+.about-content pre,
+.about-content code {
+  background-color: #f4f4f4;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.about-content pre {
+  padding: 1rem;
+  margin: 1.5rem auto;
+  max-width: 800px;
+  overflow-x: auto;
+  border-left: 4px solid #6ee7b7;
+}
+
+.about-content code {
+  padding: 2px 6px;
+  font-size: 0.9em;
+}
+
 /* Dark Mode Support */
 html.dark .about-page-wrapper {
   background: #1a1a1a;
@@ -148,11 +500,11 @@ html.dark .about-main-title {
 }
 
 html.dark .about-subtitle {
-  color: #4db6ac;
+  color: #6ee7b7;
 }
 
 html.dark .about-divider {
-  background: #4db6ac;
+  background: #6ee7b7;
 }
 
 html.dark .about-featured-image {
@@ -161,6 +513,121 @@ html.dark .about-featured-image {
 
 html.dark .about-content {
   color: #e0e0e0;
+}
+
+/* Dark Mode Anchor Links */
+html.dark .about-content a {
+  color: #66b3ff;
+}
+
+html.dark .about-content a:hover {
+  color: #4da6ff;
+}
+
+html.dark .about-content a:visited {
+  color: #b39ddb;
+}
+
+html.dark .about-content h1,
+html.dark .about-content h3,
+html.dark .about-content h5,
+html.dark .about-content h6 {
+  color: #ffffff;
+}
+
+html.dark .about-content h2,
+html.dark .about-content h4 {
+  color: #6ee7b7;
+}
+
+/* Dark Mode Table Styling */
+html.dark .about-content table {
+  background-color: #2a2a2a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .about-content table th {
+  background-color: #6ee7b7;
+  color: #1a1a1a;
+  border-bottom-color: #5dd9a7;
+  border-right-color: #5dd9a7;
+}
+
+html.dark .about-content table td {
+  color: #e0e0e0;
+  border-bottom-color: #3a3a3a;
+  border-right-color: #3a3a3a;
+}
+
+html.dark .about-content table tr:nth-child(even) {
+  background-color: #333333;
+}
+
+html.dark .about-content table tr:hover {
+  background-color: #2d4a3d;
+}
+
+html.dark .about-content table th:first-child,
+html.dark .about-content table td:first-child {
+  border-left-color: #6ee7b7;
+}
+
+/* Dark Mode table dropdowns */
+html.dark .about-content table td details summary {
+  color: #6ee7b7;
+}
+
+html.dark .about-content table td details summary::before {
+  color: #6ee7b7;
+}
+
+html.dark .about-content table td details summary:hover {
+  color: #5dd9a7;
+}
+
+html.dark .about-content table td details .details-content {
+  border-left-color: #6ee7b7;
+  color: #e0e0e0;
+}
+
+/* Dark Mode standalone dropdowns */
+html.dark .about-content details:not(table details) {
+  background-color: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+html.dark .about-content details:not(table details) summary {
+  background-color: #2a2a2a;
+  color: #6ee7b7;
+}
+
+html.dark .about-content details:not(table details) summary::before {
+  color: #6ee7b7;
+}
+
+html.dark .about-content details:not(table details) summary:hover {
+  background-color: #333333;
+}
+
+html.dark .about-content details:not(table details)[open] summary {
+  background-color: #2a2a2a;
+  border-bottom-color: #3a3a3a;
+}
+
+html.dark .about-content details:not(table details) .details-content {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
+}
+
+/* Dark Mode Code Blocks */
+html.dark .about-content pre,
+html.dark .about-content code {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+html.dark .about-content pre {
+  border-left-color: #6ee7b7;
 }
 
 /* Adjust padding in dark mode since sidebars are hidden */

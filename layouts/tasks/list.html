@@ -1,0 +1,435 @@
+{{ define "main" }}
+<div class="tasks-page-wrapper">
+  <!-- Decorative Green Background Sidebars -->
+  <div class="decorative-bg decorative-bg-left"></div>
+  <div class="decorative-bg decorative-bg-right"></div>
+  
+  <div class="tasks-content-wrapper">
+    <div class="universal-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+      
+      <!-- Header Section -->
+      <div class="tasks-header">
+        {{ with .Title }}
+        <h1 class="tasks-main-title">{{ . }}</h1>
+        {{ end }}
+        {{ with .Content }}
+        <div class="article-style">{{ . }}</div>
+        {{ end }}
+      </div>
+      
+      <!-- Task Semester Tabs -->
+      <div class="task-tabs">
+        <div class="tab-headers">
+          <button class="tab-header active" data-semester="fall2025">Fall 2025</button>
+          <button class="tab-header" data-semester="spring2026">Spring 2026</button>
+        </div>
+        
+        <!-- Fall 2025 Content -->
+        <div id="fall2025" class="tab-content active">
+          <div class="task-list">
+            {{ $fall2025_tasks := where site.RegularPages "Section" "tasks" }}
+            {{ $fall2025_tasks = where $fall2025_tasks ".Params.semester" "fall2025" }}
+            {{ if $fall2025_tasks }}
+              {{ range $fall2025_tasks }}
+                <a href="{{ .RelPermalink }}" class="task-item-link">
+                  <div class="task-item">
+                    <h3>{{ .Title }}</h3>
+                    {{ with .Params.due_date }}<p class="task-due-date"><strong>Due:</strong> {{ . }}</p>{{ end }}
+                    {{ with .Summary }}<p class="task-summary">{{ . }}</p>{{ end }}
+                  </div>
+                </a>
+              {{ end }}
+            {{ else }}
+              <p>No tasks available for Fall 2025.</p>
+            {{ end }}
+          </div>
+        </div>
+        
+        <!-- Spring 2026 Content -->
+        <div id="spring2026" class="tab-content">
+          <div class="task-list">
+            {{ $spring2026_tasks := where site.RegularPages "Section" "tasks" }}
+            {{ $spring2026_tasks = where $spring2026_tasks ".Params.semester" "spring2026" }}
+            {{ if $spring2026_tasks }}
+              {{ range $spring2026_tasks }}
+                <a href="{{ .RelPermalink }}" class="task-item-link">
+                  <div class="task-item">
+                    <h3>{{ .Title }}</h3>
+                    {{ with .Params.due_date }}<p class="task-due-date"><strong>Due:</strong> {{ . }}</p>{{ end }}
+                    {{ with .Summary }}<p class="task-summary">{{ . }}</p>{{ end }}
+                  </div>
+                </a>
+              {{ end }}
+            {{ else }}
+              <p>No tasks available for Spring 2026.</p>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Main Container with Decorative Sidebars */
+.tasks-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+/* Decorative Green Background Sidebars */
+.decorative-bg {
+  position: fixed;
+  width: 300px;
+  min-height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.decorative-bg-left {
+  left: 0;
+  background: linear-gradient(135deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+  opacity: 0.95;
+}
+
+.decorative-bg-right {
+  right: 0;
+  background: linear-gradient(225deg, #1e5f4f 0%, #2d7a66 50%, #3d9980 100%);
+  opacity: 0.95;
+}
+
+/* Content Wrapper */
+.tasks-content-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 320px;
+}
+
+/* Header Section */
+.tasks-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 20px;
+}
+
+.tasks-main-title {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.task-tabs {
+  margin-top: 2rem;
+}
+
+.tab-headers {
+  display: flex;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 2rem;
+}
+
+.tab-header {
+  background: none;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  color: var(--text-color);
+}
+
+.tab-header:hover {
+  background-color: var(--hover-bg);
+}
+
+.tab-header.active {
+  border-bottom-color: #28a745;
+  color: #28a745;
+  text-decoration: underline;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.task-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.task-item {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--card-bg);
+  transition: box-shadow 0.3s ease;
+}
+
+.task-item:hover {
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.task-item h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.task-item h3 a {
+  text-decoration: none;
+  color: var(--heading-color);
+}
+
+.task-item h3 a:hover {
+  color: #28a745;
+}
+
+.task-due-date {
+  color: #dc3545;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.task-summary {
+  color: var(--muted-text);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+
+
+.task-tabs {
+  margin-top: 2rem;
+}
+
+.tab-headers {
+  display: flex;
+  border-bottom: 2px solid #e1e5e9;
+  margin-bottom: 2rem;
+}
+
+.tab-header {
+  background: none;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  color: #4a5568;
+}
+
+.tab-header:hover {
+  background-color: #f8f9fa;
+}
+
+.tab-header.active {
+  border-bottom-color: #1e5f4f;
+  color: #1e5f4f;
+  text-decoration: underline;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.task-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.task-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.task-item {
+  padding: 1.5rem;
+  border: 1px solid #e1e5e9;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.task-item-link:hover .task-item {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.task-item h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.task-item-link:hover .task-item h3 {
+  color: #28a745;
+}
+
+.task-due-date {
+  color: #dc3545;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.task-summary {
+  color: #6c757d;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Dark Mode Support - Following the same pattern as About and Team pages */
+html.dark .tasks-main-title {
+  color: #ffffff;
+}
+
+html.dark .tab-headers {
+  border-bottom-color: #495057;
+}
+
+html.dark .tab-header {
+  color: #e9ecef;
+}
+
+html.dark .tab-header:hover {
+  background-color: #495057;
+}
+
+html.dark .task-item {
+  background-color: #343a40;
+  border-color: #495057;
+}
+
+html.dark .task-item-link:hover .task-item {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+html.dark .task-item h3 {
+  color: #f8f9fa;
+}
+
+html.dark .task-item-link:hover .task-item h3 {
+  color: #28a745;
+}
+
+html.dark .tab-header.active {
+  border-bottom-color: #6ee7b7;
+  color: #6ee7b7;
+  text-decoration: underline;
+}
+
+html.dark .task-summary {
+  color: #adb5bd;
+}
+
+/* Dark Mode - Hide green sidebars in dark mode */
+html.dark .decorative-bg {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .decorative-bg {
+    width: 200px;
+  }
+  
+  .tasks-content-wrapper {
+    padding: 0 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  .decorative-bg {
+    width: 150px;
+  }
+  
+  .tasks-content-wrapper {
+    padding: 0 170px;
+  }
+}
+
+@media (max-width: 768px) {
+  .decorative-bg {
+    width: 80px;
+    opacity: 0.7;
+  }
+  
+  .tasks-page-wrapper {
+    padding: 40px 15px;
+  }
+  
+  .tasks-content-wrapper {
+    padding: 0 100px;
+  }
+  
+  .tasks-main-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .decorative-bg {
+    width: 50px;
+    opacity: 0.5;
+  }
+  
+  .tasks-content-wrapper {
+    padding: 0 70px;
+  }
+  
+  .tasks-main-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabHeaders = document.querySelectorAll('.tab-header');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabHeaders.forEach(header => {
+    header.addEventListener('click', function() {
+      const semester = this.getAttribute('data-semester');
+      
+      // Remove active class from all headers and contents
+      tabHeaders.forEach(h => h.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      // Add active class to clicked header and corresponding content
+      this.classList.add('active');
+      document.getElementById(semester).classList.add('active');
+    });
+  });
+});
+</script>
+
+{{ end }}

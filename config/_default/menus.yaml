@@ -10,9 +10,12 @@ main:
   - name: About
     url: about/
     weight: 1
-  - name: Publications
-    url: publication/
+  - name: Tasks
+    url: tasks/
     weight: 11
+  - name: Archive
+    url: archive/
+    weight: 2
   # - name: Projects
   #   url: project/
   #   weight: 12
