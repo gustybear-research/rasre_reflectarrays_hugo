@@ -10,7 +10,7 @@ Review and analyze the latest research papers in reflectarray technology. Prepar
 <!--more-->
 
 ## Objectives
-- Identify recent advances in reflectarray design
+- Create a simulation for a reflectarray antenna
 - Compare different simulation approaches
 - Summarize findings in a 10-page report
 
