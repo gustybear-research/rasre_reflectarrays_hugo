@@ -15,10 +15,11 @@ Reflectarray present a paradigm shift in wireless communication and sensing in m
 
 ## Logistics {#logistics}
 - **CRN**
-| Semester    | ENGR196 | ENGR296 | ENGR396 | ECE496 |
-| ---         | ---     | ---     | ---     | ---    |
-| Spring 2025 | TBD     | TBD     | TBD     | TBD    |
-| Fall   2025 | 79483   | 76390   | 76469   | 77488  |
+| Semester    | ECE196 | ECE296 | ECE396 | ECE496 |
+| ---         | ---    | ---    | ---    | ---    |
+| Spring 2025 | TBD    | TBD    | TBD    | TBD    |
+| Fall   2025 | 79483  | 76390  | 76469  | 77488  |
+| Spring 2026 | 88386  | 86204  | 86025  | 87108  |
 
 - **Personnel**
 | Advisor                                                                                                                          | Office Hours                |

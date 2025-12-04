@@ -19,7 +19,7 @@ sections:
         icon: "sparkles"
       secondary_action:
         text: "Learn More"
-        url: "/~rasre/about"
+        url: "/~viprasre/about"
       # announcement:
       #   text: "🎉 New features available now!"
       #   link:

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ site.Language.Lang }}" {{ if in site.Language.Lang "ar" }}dir="rtl"{{ end }}>
+<html lang="{{ site.Language.Lang }}" {{ if in site.Language.Lang "ar" }}dir="rtl"{{ end }} data-wc-theme-default="{{ site.Params.appearance.mode | default "system" }}">
 <head>
   {{ partial "site_head" . }}
   <!-- Font Awesome for social icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
   {{ partial "components/headers/navbar" . }}
   
   <main>

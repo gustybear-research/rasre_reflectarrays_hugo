@@ -2,7 +2,7 @@
 title: "Research Paper Review"
 date: 2025-11-04
 semester: "fall2025"
-due_date: "December 15, 2025"
+due_date: "2025-12-15"
 ---
 
 Review and analyze the latest research papers in reflectarray technology. Prepare a comprehensive summary highlighting key innovations and methodologies.

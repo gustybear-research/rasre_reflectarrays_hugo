@@ -31,13 +31,19 @@
           <div class="task-list">
             {{ $fall2025_tasks := where site.RegularPages "Section" "tasks" }}
             {{ $fall2025_tasks = where $fall2025_tasks ".Params.semester" "fall2025" }}
-            {{ if $fall2025_tasks }}
-              {{ range $fall2025_tasks }}
-                <a href="{{ .RelPermalink }}" class="task-item-link">
+            {{ $sorted_tasks := slice }}
+            {{ range $fall2025_tasks }}
+              {{ $sorted_tasks = $sorted_tasks | append (dict "page" . "date" .Params.due_date) }}
+            {{ end }}
+            {{ $sorted_tasks = sort $sorted_tasks "date" }}
+            {{ if $sorted_tasks }}
+              {{ range $sorted_tasks }}
+                {{ $task := .page }}
+                <a href="{{ $task.RelPermalink }}" class="task-item-link">
                   <div class="task-item">
-                    <h3>{{ .Title }}</h3>
-                    {{ with .Params.due_date }}<p class="task-due-date"><strong>Due:</strong> {{ . }}</p>{{ end }}
-                    {{ with .Summary }}<p class="task-summary">{{ . }}</p>{{ end }}
+                    <h3>{{ $task.Title }}</h3>
+                    {{ with $task.Params.due_date }}<p class="task-due-date"><strong>Due:</strong> {{ dateFormat "January 2, 2006" . }}</p>{{ end }}
+                    {{ with $task.Summary }}<p class="task-summary">{{ . }}</p>{{ end }}
                   </div>
                 </a>
               {{ end }}
@@ -52,13 +58,19 @@
           <div class="task-list">
             {{ $spring2026_tasks := where site.RegularPages "Section" "tasks" }}
             {{ $spring2026_tasks = where $spring2026_tasks ".Params.semester" "spring2026" }}
-            {{ if $spring2026_tasks }}
-              {{ range $spring2026_tasks }}
-                <a href="{{ .RelPermalink }}" class="task-item-link">
+            {{ $sorted_tasks := slice }}
+            {{ range $spring2026_tasks }}
+              {{ $sorted_tasks = $sorted_tasks | append (dict "page" . "date" .Params.due_date) }}
+            {{ end }}
+            {{ $sorted_tasks = sort $sorted_tasks "date" }}
+            {{ if $sorted_tasks }}
+              {{ range $sorted_tasks }}
+                {{ $task := .page }}
+                <a href="{{ $task.RelPermalink }}" class="task-item-link">
                   <div class="task-item">
-                    <h3>{{ .Title }}</h3>
-                    {{ with .Params.due_date }}<p class="task-due-date"><strong>Due:</strong> {{ . }}</p>{{ end }}
-                    {{ with .Summary }}<p class="task-summary">{{ . }}</p>{{ end }}
+                    <h3>{{ $task.Title }}</h3>
+                    {{ with $task.Params.due_date }}<p class="task-due-date"><strong>Due:</strong> {{ . }}</p>{{ end }}
+                    {{ with $task.Summary }}<p class="task-summary">{{ . }}</p>{{ end }}
                   </div>
                 </a>
               {{ end }}
@@ -336,7 +348,7 @@ html.dark .task-item h3 {
 }
 
 html.dark .task-item-link:hover .task-item h3 {
-  color: #28a745;
+  color: #6ee7b7;
 }
 
 html.dark .tab-header.active {
