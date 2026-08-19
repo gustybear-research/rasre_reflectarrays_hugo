@@ -6,7 +6,7 @@
 # Website name
 title: UHM RASRE Lab
 # Website URL
-baseURL: 'http://www2.hawaii.edu/~viprasre/'
+baseURL: 'https://gustybear-research.github.io/rasre_reflectarrays_hugo/'
 
 ############################
 ## LANGUAGE
